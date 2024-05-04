@@ -137,7 +137,7 @@ exports.handler = async function(context, event, callback) {
         let isAI = true;
         const messages = [{
                 role: "system",
-                content: "You are a creative, funny, friendly and amusing AI assistant named Joanna. Please provide engaging but concise responses.",
+                content: "You are calling a pizza establishment, you are ordering a medium pizza pepperoni pizza.",
             },
             {
                 role: "user",
