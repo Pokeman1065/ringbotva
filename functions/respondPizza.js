@@ -51,7 +51,7 @@ exports.handler = async function(context, event, callback) {
     twiml.redirect({
             method: "POST",
         },
-        `/transcribe`
+        `/transcribePizza`
     );
 
     // Since we're using the response object to handle cookies we can't just pass the TwiML straight back to the callback, we need to set the appropriate header and return the TwiML in the body of the response
@@ -81,8 +81,8 @@ exports.handler = async function(context, event, callback) {
             const completion = await openai.createChatCompletion({
                 model: "gpt-3.5-turbo",
                 messages: messages,
-                temperature: 0.8, // Controls the randomness of the generated responses. Higher values (e.g., 1.0) make the output more random and creative, while lower values (e.g., 0.2) make it more focused and deterministic. You can adjust the temperature based on your desired level of creativity and exploration.
-                max_tokens: 100, //You can adjust this number to control the length of the generated responses. Keep in mind that setting max_tokens too low might result in responses that are cut off and don't make sense.
+                temperature: 0.8 // Controls the randomness of the generated responses. Higher values (e.g., 1.0) make the output more random and creative, while lower values (e.g., 0.2) make it more focused and deterministic. You can adjust the temperature based on your desired level of creativity and exploration.
+                //You can adjust this number to control the length of the generated responses. Keep in mind that setting max_tokens too low might result in responses that are cut off and don't make sense.
                 // top_p: 0.9, Set the top_p value to around 0.9 to keep the generated responses focused on the most probable tokens without completely eliminating creativity. Adjust the value based on the desired level of exploration.
                 // n: 1, Specifies the number of completions you want the model to generate. Generating multiple completions will increase the time it takes to receive the responses.
             });
@@ -99,7 +99,7 @@ exports.handler = async function(context, event, callback) {
                         // Create a TwiML redirect element to redirect the user to the /transcribe endpoint
                         method: "POST",
                     },
-                    `/transcribe`
+                    `/transcribePizza`
                 );
                 response.appendHeader("Content-Type", "application/xml"); // Set the Content-Type header of the response to "application/xml"
                 response.setBody(twiml.toString()); // Set the body of the response to the XML string representation of the TwiML response
@@ -120,7 +120,7 @@ exports.handler = async function(context, event, callback) {
                         // Create a TwiML redirect element to redirect the user to the /transcribe endpoint
                         method: "POST",
                     },
-                    `/transcribe`
+                    `/transcribePizza`
                 );
                 response.appendHeader("Content-Type", "application/xml"); // Set the Content-Type header of the response to "application/xml"
                 response.setBody(twiml.toString()); // Set the body of the response to the XML string representation of the TwiML response
@@ -137,11 +137,11 @@ exports.handler = async function(context, event, callback) {
         let isAI = true;
         const messages = [{
                 role: "system",
-                content: "You are calling a pizza establishment, you are ordering a medium pizza pepperoni pizza.",
+                content: "You are calling a pizza establishment, you are ordering a large pepperoni pizza with a can of root beer. Please be kind and respectful.",
             },
             {
                 role: "user",
-                content: "We are having a casual conversation over the telephone so please provide engaging but concise responses.",
+                content: conversation,
             },
         ];
 

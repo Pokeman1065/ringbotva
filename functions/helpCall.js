@@ -4,7 +4,7 @@ exports.handler = function (context, event, callback) {
   
     // Query parameters or values sent in a POST body can be accessed from `event`
     const from = event.From || '+12267903460';
-    const to = event.To || '+12263320310';
+    const to = event.To || '+12265017679';
     // Note that TwiML can be hosted at a URL and accessed by Twilio
     const url = event.Url || 'http://demo.twilio.com/docs/voice.xml';
   
@@ -12,7 +12,7 @@ exports.handler = function (context, event, callback) {
     // and `catch` to properly handle the promise and call `callback` _after_ the
     // call is placed successfully!
     twilioClient.calls
-      .create({ to, from, url })
+      .create({ from, to, url })
       .then((call) => {
         console.log('Call successfully placed');
         console.log(call.sid);
