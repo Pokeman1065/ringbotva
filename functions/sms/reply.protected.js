@@ -41,11 +41,8 @@ exports.handler = function(context, event, callback) {
       if (textObject) {
         var message = textObject.payload.message;
 
-        var isOrder = false;
-
-        // Check if the message is "Hey I need to call you right now"
         if (message.includes("right now")) {
-          // Make outbound call
+          // Make outbound call to help function
           client.calls.create({
             url: 'https://ringbotva-1918-dev.twil.io/transcribeHelp',
             to: userNumber,
@@ -56,7 +53,6 @@ exports.handler = function(context, event, callback) {
             console.error('Error making call:', error);
           });
         } else if (message.includes("HERE IS ORDER:")) {
-
 
           // Remove "HERE IS ORDER:" from the string
           const jsonString = message.slice(message.indexOf("{"));
@@ -80,26 +76,21 @@ exports.handler = function(context, event, callback) {
           }).catch(error => {
             console.error('Error making call:', error);
           });
-          message = urlString;
+          message = "The order has been placed!";
           
         }
 
-        if (!isOrder) {
-          // Send message
-          twiml.message(message); 
-        }
-        
-        
+        twiml.message(message); 
         
       } else {
         console.log('No text object found in the response data.');
       }
 
-      callback(null, twiml); // Move callback inside axios request's `.then()` block
+      callback(null, twiml);
     })
     .catch(function (error) {
       console.error(error);
-      callback(error); // Pass error to callback
+      callback(error); // Pass error to callback if fail
     });
 
 };

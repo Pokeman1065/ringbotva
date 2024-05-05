@@ -144,7 +144,7 @@ exports.handler = async function(context, event, callback) {
         let isAI = true;
         const messages = [{
                 role: "system",
-                content: "You are ordering food by phone for delivery. You are a customer who wants the food to be piping hot. You want to order "+orderItems+". Your address is "+address+" and the name for the order is Jerry. Do not say please too many times and do not say the address or name unless requested.",
+                content: "You are ordering food by phone for delivery. You are a customer who wants the food to be piping hot. You want to order "+orderItems+". Your address is "+address+" and the name for the order is Olivia. Do not say please too many times and do not say the address or name unless requested.",
             },
             {
                 role: "user",
