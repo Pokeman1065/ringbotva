@@ -4,7 +4,7 @@ As introverts, one of our biggest fears is being stuck in a social situation lik
 With our inspiration in mind, my partner and I set out to create **a solution for introverts and people with social anxiety**. _(It can also order pizza for you too!)_
 
 ## Check out a Demo Here!
-https://www.youtube.com/watch?v=t_pq2zv3DW8
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/t_pq2zv3DW8/0.jpg)](https://www.youtube.com/watch?v=t_pq2zv3DW8)
 
 ## What it does
 By messaging our specialized _Twilio_ number, you can have a conversation with our virtual AI chatbot _Olivia_. We have trained the AI to recognize specific intents in _Voiceflow_, which will result in certain functions being performed. 
