@@ -42,7 +42,7 @@ exports.handler = async function(context, event, callback) {
 
     // Generate some <Say> TwiML using the cleaned up AI response
     twiml.say({
-            voice: "Polly.Joanna-Neural",
+            voice: "Polly.Olivia-Neural",
         },
         cleanedAiResponse
     );
@@ -91,7 +91,7 @@ exports.handler = async function(context, event, callback) {
                 console.error("Error: OpenAI API returned a 500 status code."); // Log an error message indicating that the OpenAI API returned a 500 status code
                 twiml.say({
                         // Create a TwiML say element to provide an error message to the user
-                        voice: "Polly.Joanna-Neural",
+                        voice: "Polly.Olivia-Neural",
                     },
                     "Oops, looks like I got an error from the OpenAI API on that request. Let's try that again."
                 );
@@ -112,7 +112,7 @@ exports.handler = async function(context, event, callback) {
                 console.error("Error: OpenAI API request timed out."); // Log an error message indicating that the OpenAI API request timed out
                 twiml.say({
                         // Create a TwiML say element to provide an error message to the user
-                        voice: "Polly.Joanna-Neural",
+                        voice: "Polly.Olivia-Neural",
                     },
                     "I'm sorry, but it's taking me a little bit too long to respond. Let's try that again, one more time."
                 );

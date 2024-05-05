@@ -6,9 +6,9 @@ exports.handler = function(context, event, callback) {
     if (!event.request.cookies.convo) {
         // Greet the user with a message using AWS Polly Neural voice
         twiml.say({
-                voice: 'Polly.Joanna-Neural',
+                voice: 'Polly.Olivia-Neural',
             },
-            "Hey! I'm Joanna, a chatbot created using Twilio and ChatGPT. What would you like to talk about today?"
+            "Hey! I'm Olivia, a chatbot created using Twilio and ChatGPT. What would you like to talk about today?"
         );
     }
 

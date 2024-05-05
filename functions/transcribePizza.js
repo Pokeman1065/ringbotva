@@ -1,4 +1,12 @@
 exports.handler = function(context, event, callback) {
+
+    // Access parameters from the URL
+    const phoneNumber = event.phoneNumber;
+    const orderItems = event.orderItems;
+    const address = event.address;
+
+    
+
     // Create a TwiML Voice Response object to build the response
     const twiml = new Twilio.twiml.VoiceResponse();
 
@@ -7,7 +15,7 @@ exports.handler = function(context, event, callback) {
         speechTimeout: 'auto', // Automatically determine the end of user speech
         speechModel: 'experimental_conversations', // Use the conversation-based speech recognition model
         input: 'speech', // Specify speech as the input type
-        action: '/respondPizza', // Send the collected input to /respond 
+        action: `/respondPizza?phoneNumber=${encodeURIComponent(phoneNumber)}&orderItems=${encodeURIComponent(orderItems)}&address=${encodeURIComponent(address)}` // Send the collected input to /respond 
     });
 
     // Create a Twilio Response object
